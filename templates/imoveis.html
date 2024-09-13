@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    <a href="/imoveis/add">Adicionar</a>
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            {{ msg }}
+        {% endfor %}
+    {% endif %}
+    <section>
+        <table>
+            <tr>
+                <th>Endereço</th>
+                <th>Tipo</th>
+                <th>Valor</th>
+                <th>Editar</th>
+                <th>Remover</th>
+            </tr>
+            {% for imoveis in dados %}
+            <tr>
+                <td>{{imoveis.endereco}}</td>
+                <td>{{imoveis.tipo}}</td>
+                <td>{{imoveis.valor}}</td>
+                <td><a href="/imoveis/edit/{{imoveis.id_imoveis}}">[E]</a></td>
+                <td><a href="/imoveis/remove/{{imoveis.id_imoveis}}">[X]</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+{% endblock %}

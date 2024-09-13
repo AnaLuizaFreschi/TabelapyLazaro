@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            <h1>{{ msg }}</h1> 
+        {% endfor %}
+    {% endif %}
+    <form action="/imoveis/editsave" method="post">
+        <input type="hidden" name="id" value="{{dados.id_imoveis}}">
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" name="endereco" id="endereco" value="{{dados.endereco}}">
+
+        <label for="tipo">Tipo:</label>
+        <input type="text" name="tipo" id="tipo" value="{{dados.tipo}}">
+
+        <label for="valor">Valor:</label>
+        <input type="number" name="valor" id="valor" value="{{dados.valor}}">
+
+        </br>
+
+        <button type="submit">Salvar</button>
+    </form>
+{% endblock %}

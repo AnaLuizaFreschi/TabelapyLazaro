@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            <h1>{{ msg }}</h1>
+        {% endfor %}
+    {% endif %}
+    <form action="/imoveis/save" method="post">
+        <label class="name" for="endereco">Endereço:</label>
+        <input type="text" name="endereco" id="endereco">
+
+        <label class="name" for="tipo">Tipo:</label>
+        <input type="text" name="tipo" id="tipo">
+
+        <label class="name" for="valor">Valor:</label>
+        <input type="number" name="valor" id="valor">
+
+        </br>
+
+        <button class="name" type="submit">Salvar</button>
+    </form>
+{% endblock %}
